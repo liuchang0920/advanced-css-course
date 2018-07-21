@@ -1,0 +1,70 @@
+
+.btn {
+
+    /* pseudo class is a special state of the selector */
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        
+        /* currently it shows as inline, so maybe cover some other elements, should make them inline block */
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        padding: 1.5rem 4rem;
+
+        /* this is important */
+        position: relative;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2); 
+
+        /* button grow and fade out */
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            /* fade out */
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2); 
+
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-gray;
+        padding: 15px 40px;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &::after {
+        content: "";
+        display:inline-block;
+        height: 100%; /* compared to its parent element, the button */
+        width:100%;
+        border-radius: 10rem;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        transition: all .4s;
+    }
+
+
+    &--animated {
+        animation: moveInBottom 0.5s ease-out 0.75s;
+
+        /* magic ?? */
+        animation-fill-mode: backwards;
+    }
+}
