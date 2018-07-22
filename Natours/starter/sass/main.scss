@@ -1,18 +1,17 @@
-@import "base/bass";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-@import "./base/animations";
-@import "./base/typography";
-@import "./base/variables";
 
-@import "./abstracts/functions";
-@import "./abstracts/mixins";
-@import "./abstracts/variables";
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
 
-@import "./components/button";
+@import "components/button";
 
-@import "./layout/header";
+@import "layout/header";
 
-@import "./pages/home";
+@import "pages/home";
 
 .heading-primary {
     color: $color-white;
