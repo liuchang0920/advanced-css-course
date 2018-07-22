@@ -1,0 +1,43 @@
+.composition {
+    // 父节点必须设置成relative， 
+    // 子节点设置成absolute，会找到第一个relative的祖先，并对其采用相对距离
+    position: relative;
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+        position: absolute;
+        z-index: 10;
+        transition: all 0.2s; // give some animation 
+        outline-offset: 2rem;
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+    
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+    
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.2rem solid $color-primary;
+            
+            transform: scale(1.2) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4 rem rgba($color: $color-black, $alpha: 0.5);
+            z-index: 20;
+
+
+        }
+    }
+
+   &:hover &__photo:not(:hover) {
+       transform: scale(0.9);
+   }
+
+}

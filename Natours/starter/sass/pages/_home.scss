@@ -1,0 +1,26 @@
+
+.section-about {
+    background-color: $color-gray-light-1;
+    padding: 25em;
+    margin-top: -20vh;
+}
+
+.section-features {
+    padding: 20rem 0;
+    margin-top: -15rem;
+
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+         url('../img/nat-4.jpg');
+    background-size: cover;
+
+    // skew design of background
+    transform: skewY(-7deg); // - 逆时针旋转
+
+    // select direct child
+    & > * { 
+        transform: skewY(7deg);
+    }
+}
