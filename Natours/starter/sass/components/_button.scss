@@ -2,7 +2,7 @@
 .btn {
 
     /* pseudo class is a special state of the selector */
-    &:link,
+    &,&:link,
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
@@ -16,10 +16,12 @@
         /* this is important */
         position: relative;
         font-size: 1.6rem;
+        border: none;
     }
 
-    &:hover {
-        transform: translateY(-3px);
+    &:hover{
+
+        transform: translateY(-5px);
         box-shadow: 0 1rem 2rem rgba($color-black, 0.2); 
 
         /* button grow and fade out */
@@ -30,8 +32,10 @@
         }
     }
 
-    &:active {
-        transform: translateY(-1px);
+    &:active,
+    &:focus { // active for url, focus for buttons
+        outline: none;
+        transform: translateY(-2px);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2); 
 
     }
@@ -86,7 +90,7 @@
         color: $color-primary;
         display: inline-block; // so that we can use box properties like padding, margin,,,
         text-decoration: none;
-        border-bottom: 1px solid $color-primary;
+        // border-bottom: 1px solid $color-primary;
         padding: 3px;
         transition: all .2s; // all move method taks time ??
     }
