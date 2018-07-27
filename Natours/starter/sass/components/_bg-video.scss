@@ -15,4 +15,7 @@
         object-fit: cover; // cover the whole page, similar to image 
 
     }
+
+    overflow: hidden; // 如果长宽 溢出了 不会超过父element 
+
 }
