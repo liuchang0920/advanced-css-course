@@ -16,8 +16,16 @@
     transition: all 0.3s;
 
    
+    
+   // 使用feature query 对于不同的浏览器采用不同的特效
+   @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)){
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background-color: rgba($color-black, 0.3);
 
-    &__content {
+   } 
+
+   &__content {
         @include absCenter;
 
         width: 75%;

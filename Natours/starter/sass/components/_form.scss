@@ -17,7 +17,7 @@
         // 所以这里预留3px的位置
         border-bottom: 3px solid transparent;
 
-        width: 90%;
+        width: 75%;
         display: block;
 
         transition: all 0.3s;
@@ -37,6 +37,17 @@
         &:focus:invalid {
             border-bottom: 3px solid $color-secondary-dark;
         }
+
+        @include respond(tab-land) {
+            width: 60%;
+           
+        }
+
+        @include respond(tab-port) {
+            width: 100%;
+           
+        }
+
     } 
 
 
@@ -60,9 +71,14 @@
     }
 
     &__radio-group {
-        width: 40%;
+        width: 49%;
         display: inline-block;
 
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+
+        }
     }
 
     &__radio-input {

@@ -12,22 +12,46 @@
 
     transform: skewX(-12deg);
 
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;  // 菱形还能看
+    }
+
+    @include respond(phone) {
+        // 菱形已经超过边界，变成一般的矩形
+        transform: skewX(0);
+    }
+
     &__shape {
         width:15rem;
         height: 15rem;
-
+        margin: 1rem;
         // background-color: orangered;
         
         // 一下两条 保证能够变成圆形的background？？
         float: left;
-        shape-outside: circle(50% at 50% 50%);
-        -webkit-shape-outside: circle(50% at 50% 50%);
-
-        clip-path: circle(50% at 50% 50%);
-
         transform: translateX(-3rem) skewX(12deg);
 
         position: relative;
+
+        overflow: hidden; // 这一部能够遮挡超出的图片
+        border-radius: 50%;
+
+            // media query for polygon support
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none;
+            
+        }
+        
+        @include respond(phone) {
+            // 菱形已经超过边界，变成一般的矩形
+            transform:skewX(0);
+        }
+
     }
 
     &__img {
@@ -42,6 +66,11 @@
 
     &__text {
         transform: skewX(12deg);
+
+        @include respond(phone) {
+            // 菱形已经超过边界，变成一般的矩形
+            transform:skewX(0);
+        }
     }
 
     &__caption {
