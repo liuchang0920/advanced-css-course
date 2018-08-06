@@ -30,10 +30,19 @@ Grey dark 3: #999
 
     --shadow-dark:  0 2rem 6rem rgba(0, 0, 0, 0.3);
     --shadow-light:  0 2rem 5rem rgba(0, 0, 0, 0.08);
-    
+
     --line: 1px solid var(--color-grey-light-2);
 
     }
+
+
+
+// 注意单位..
+$bp-largest: 75em; // 1200 /16 break poin
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px / 16
+$bp-small: 37.5em; //v600/ 16
+$bp-smalles: 31.25rem; // 500px smallies                         
 
 * {
     margin: 0;
@@ -52,12 +61,16 @@ body {
     background-repeat: no-repeat;;
     
     min-height: 100vh;
+
 }
 
 html {
     box-sizing: border-box;   
-    font-size: 90%; // i rem == 10px; 10/16
+    font-size: 62.5%; // i rem == 10px; 10/16
 
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%;
+    }
 }
 
 *,
