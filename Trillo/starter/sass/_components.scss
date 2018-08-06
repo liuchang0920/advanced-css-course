@@ -125,3 +125,383 @@
 }
 
 
+.side-nav {
+
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+
+    &__item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &__item::before {
+        content: "";// or it won't show anything
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color:  var(--color-primary);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform  .2s,  width 0.4s  cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+
+        z-index: 10;
+    }
+
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+
+    }
+
+    &__item:active::before {
+        background-color: var(--color-primary-light);
+
+    }
+
+    &__link {
+        // flex for icon and text
+
+    }
+
+
+    &__link:link,
+    &__link:visited {
+         color: var(--color-grey-light-1);
+         text-decoration: none;
+         text-transform: uppercase;
+         display: block;
+         padding: 1.5rem 3rem;
+
+         // why write in here??  center elements
+         display: flex;
+         align-items: center;
+
+         z-index: 100;
+         position: relative; // z index only works if set position
+    }
+
+    &__link:hover {
+        // color: orangered;
+
+   }
+
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+
+        margin-right: 2rem;
+        fill: currentColor; // color of itself or parent's color
+    }
+}
+
+.legal {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color-grey-light-4);
+    padding: 2.5rem;
+
+}
+
+
+// gallery
+
+.gallery {
+
+    display: flex;
+
+    &__photo {
+        width: 100%;
+        display: block; // inline element should have some strange behavior. 
+    }
+}
+
+
+// hotel overview
+
+.overview {
+
+    display: flex;
+    border-bottom: 1px solid var(--color-grey-light-2);
+    align-items: center;
+    
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
+
+    }
+
+    &__stars {
+        margin-right: auto;
+        // background-color: orangered;
+        display: flex; // to vertically align the child elements
+    }
+
+    &__icon-star,
+    &__icon-location {
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: var(--color-primary);
+
+    }
+
+    &__location {
+        font-size: 1.2rem;
+        display: flex; // 垂直居中
+        vertical-align: center;
+
+    }
+
+    &__icon-location {
+        margin-right: 0.5rem;
+
+    }
+
+    &__rating {
+        background-color: var(--color-primary);
+        margin-left: 3rem;
+        color: #fff;
+        align-self: stretch; // 填满整个高度
+        padding: 0 2.25rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    &__rating-average {
+        font-size: 2.25rem;
+        font-weight: 300;
+    }
+
+    &__rating-count {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+
+    }
+
+}
+
+// butto inline
+.btn-inline {
+    border: none;
+    color: var(--color-primary);
+    font-size: inherit;
+    border-bottom: 1px solid currentColor;
+    display: inline-block;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    & span {
+         margin-left: 3px;
+         transition: margin-left 0.2s;
+    }
+
+    &:hover {
+        color: var(--color-grey-dark-1);
+
+        span {
+            margin-left: 8px;
+
+        }
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulstate 1s infinite;
+
+    }
+}
+
+
+
+@keyframes pulstate {
+    0% {
+        transform: scale(1);
+        box-shadow:none;
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.24);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+/**
+
+:last-child  当前元素的子元素
+
+: last-of-type 这个类名的(除去最后一个), only apply to the same type of element
+*/
+.paragraph:not(:last-of-type) {
+
+    margin-bottom: 2rem;
+}
+
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap;
+
+    // give item a fixed with
+    &__item {
+        flex: 0 0 50%;
+        margin-bottom: 0.7rem;
+
+    }
+
+    &__item:before {
+        //  必须以下的都用上, 才能画出来
+        content: "";
+        display: inline-block;
+
+        width: 1rem;
+        height: 1rem;
+
+        margin-right: 0.7rem;
+
+        // old browser
+        // background-image: url(../img/chevron-thin-right.svg);
+        // background-size: cover;
+
+
+        // new browser: masks
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        // cover 属性能够将图片完整画出来,默认会画出实际的大小
+        -webkit-mask-size: cover;
+    }
+
+}
+
+
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex; // make them in one line.. 因为默认都是block element 会占据一整行
+    align-items: center;
+
+    &__count {
+        margin-right: auto; // 这个trick 可以让它沾满整个空白部分.. 可以用backgroundcolor 体会一下
+        // 这个属性可以将位于flexbox的右边的element推到最右边
+    }
+
+    &__friends {
+
+    }
+
+    &__photo {
+        box-sizing: content-box; // default
+
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+
+        border: 3px solid white;
+        
+        &:not(:last-child) {
+            margin-right: -1.5rem;
+
+        }
+    }
+}
+
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+
+    position: relative;
+
+    overflow: hidden; // 一旦icon 超出边界
+
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 100;
+        position: relative; // z-index 必须设值position的 relative属性
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &__photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+
+    }
+    
+    // 三列中的第二列, 让他占据跟第三列之间的空间,并把第三列推到最右边
+    &__user-box {
+        margin-right: auto;
+
+    }
+
+    &__user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+
+    }
+
+    &__user-date {
+        font-size: 1rem;
+        color: var(--color-grey-dark-3);
+
+    }
+
+    &__rating {
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+
+    }
+
+    &::before {
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: 0rem;
+        line-height: 1;
+
+        font-size: 20rem;
+        color: var(--color-grey-light-2);
+        font-family: sans-serif;
+        z-index: 5;
+    }
+}
